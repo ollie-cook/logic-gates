@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
         <h1 className="text-5xl font-bold mt-4 text-center">AND Gate Simulator</h1>
         {children}
         <p className="absolute bottom-2 right-2 text-sm" >Built by <a href="https://www.olliecookie.com" className="underline" target="_blank">Ollie Cook</a>&#x1f36a;</p>
+        <Analytics />
       </body>
     </html>
   );
