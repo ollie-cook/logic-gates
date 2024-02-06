@@ -14,6 +14,7 @@ export default function ANDGate(props: ANDGateProps) {
 
   const widthHeight = `${props.transistorWidth}px`
   const vLeftShift = `${props.transistorWidth * 0.597 - 5.791}px`
+  const outLeftShift = `${props.transistorWidth * 0.597 - 16}px`
   const divHeight = `${props.transistorWidth * props.network.length + 24}px`
 
   useEffect(() => {
@@ -74,14 +75,14 @@ export default function ANDGate(props: ANDGateProps) {
           networkState?.map((node, index) => {
             const guid = crypto.randomUUID()
             return (
-              <div className="flex items-end" key={guid}>
-                <div className="flex items-center"
+              <div className={`flex ${index == 0 ? 'items-end' : 'items-start'}`} key={guid}>
+                <div className="flex items-center relative"
                   style={{height: widthHeight}}>
                   <button 
-                    className="mr-2"
+                    className={`absolute right-2 p-1  rounded-md text-white whitespace-nowrap ${node.baseOn ? 'bg-green-500' : 'bg-red-500'}`}
                     onClick = {() => handleInputClick(node.id)}
                   >
-                    input
+                    {node.baseOn == true ? 'Turn Off' : 'Turn On'}
                   </button>
                 </div>
                 <div>
@@ -101,6 +102,16 @@ export default function ANDGate(props: ANDGateProps) {
                   >
                     <Transistor collectorIn={node.collectorOn} baseIn={node.baseOn}/>
                   </div>
+                  {
+                    index === networkState.length-1 && (
+                      <div 
+                        className="w-fit relative text-red-500  font-semibold"
+                        style={{left: outLeftShift}}
+                      >
+                        Out
+                      </div>
+                    )
+                  }
                 </div>
               </div>
             )
