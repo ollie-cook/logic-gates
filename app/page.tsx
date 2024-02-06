@@ -31,11 +31,11 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center min-h-screen">
-      <button onClick ={() => editTransistorCount('add')} className="text-xl p-2 mt-16 bg-blue-500 rounded-md text-white font-semibold hover:bg-blue-600">Add Transistor</button>
+    <main className="flex flex-col items-center mb-16 sm:mb-0">
+      <button onClick ={() => editTransistorCount('add')} className="text-xl p-2 mt-16 bg-blue-500 rounded-md text-white font-semibold hover:bg-blue-600">Add Input</button>
       {
         network.length > 1 &&
-        <button onClick ={() => editTransistorCount('remove')} className=" p-1 mt-2 bg-red-500 rounded-md text-white hover:bg-red-600">Remove Transistor</button>
+        <button onClick ={() => editTransistorCount('remove')} className=" p-1 mt-2 bg-red-500 rounded-md text-white hover:bg-red-600">Remove Input</button>
       }
       <ANDGate transistorWidth={128} network={network} />
     </main>

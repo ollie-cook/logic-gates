@@ -15,7 +15,7 @@ export default function ANDGate(props: ANDGateProps) {
   const widthHeight = `${props.transistorWidth}px`
   const vLeftShift = `${props.transistorWidth * 0.597 - 5.791}px`
   const outLeftShift = `${props.transistorWidth * 0.597 - 16}px`
-  const divHeight = `${props.transistorWidth * props.network.length + 24}px`
+  const divHeight = `${props.transistorWidth * props.network.length + 48}px`
 
   useEffect(() => {
     let tempNetworkState: NodeState[] = [];
@@ -79,7 +79,7 @@ export default function ANDGate(props: ANDGateProps) {
                 <div className="flex items-center relative"
                   style={{height: widthHeight}}>
                   <button 
-                    className={`absolute right-2 p-1  rounded-md text-white whitespace-nowrap ${node.baseOn ? 'bg-green-500' : 'bg-red-500'}`}
+                    className={`absolute right-2 p-1  rounded-md text-black whitespace-nowrap ${node.baseOn ? 'bg-green-500' : 'bg-gray-400'}`}
                     onClick = {() => handleInputClick(node.id)}
                   >
                     {node.baseOn == true ? 'Turn Off' : 'Turn On'}
@@ -105,7 +105,7 @@ export default function ANDGate(props: ANDGateProps) {
                   {
                     index === networkState.length-1 && (
                       <div 
-                        className="w-fit relative text-red-500  font-semibold"
+                        className={`w-fit relative   font-semibold ${node.collectorOn == true && node.baseOn == true ? 'text-red-500' : 'text-black'}`}
                         style={{left: outLeftShift}}
                       >
                         Out
