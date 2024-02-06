@@ -26,12 +26,11 @@ export default function ANDGate(props: ANDGateProps) {
       })
     })
 
-    setNetworkState(tempNetworkState)
-  }, [])
+    console.log('tempmNetworkState', tempNetworkState)
 
-  useEffect(() => {
-    
-  }, [networkState])
+    setNetworkState(tempNetworkState)
+  }, [props.network])
+
 
   const handleInputClick = (id: string) => {
 
@@ -45,21 +44,6 @@ export default function ANDGate(props: ANDGateProps) {
       }
       return node
     });
-
-    /*
-    let newNetworkState = nodeSwitchedOn?.map((node, index) => {
-      if (node.collectsFrom != "") {
-        let collectorNode = nodeSwitchedOn?.find(collector => collector.id === node.collectsFrom)
-        if (collectorNode?.baseOn == true && collectorNode?.collectorOn == true) {
-          return { ...node, collectorOn: true }
-        } else{
-          return { ...node, collectorOn: false }
-        }
-        
-      }
-      return node
-    })
-    */
 
     let newerNetworkState:NodeState[] | undefined = [];
     nodeSwitchedOn?.forEach((node, index) => {
@@ -82,7 +66,7 @@ export default function ANDGate(props: ANDGateProps) {
 
   return (
     <div 
-      className="relative flex"
+      className="relative flex mt-4"
       style = {{height: divHeight}}
     >
       <div className="relative h-full">
